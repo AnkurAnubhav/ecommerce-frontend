@@ -1,24 +1,28 @@
-import { useState } from 'react'
 import './App.css'
-import TestConnection from './TestConnection'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Products from './pages/Products'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Cart from './pages/Cart'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <h1>Ecomm App Fontend</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Frontend Connected
-           <TestConnection />
-        </p>
-      </div>
-    </>
+    <div className='App'>
+      <Navbar />
+      <main style={{ padding: '0 2rem' }}>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/products' element={<Products />}/>
+          <Route path='/login' element={<Login />}/>
+          <Route path='/register' element={<Register />}/>
+          <Route path='/cart' element={<Cart />}/>
+        </Routes>
+      </main>
+    </div>
   )
 }
 
-export default App
+export default App;
